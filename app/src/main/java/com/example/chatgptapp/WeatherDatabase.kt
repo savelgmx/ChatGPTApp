@@ -1,7 +1,8 @@
 package com.example.chatgptapp
 
+import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.vo.Database
+
 
 @Database(entities = [WeatherData::class], version = 1)
 
