@@ -12,5 +12,5 @@ interface WeatherDao {
     fun insertWeatherData(weatherData: WeatherData)
 
     @Query("SELECT * FROM WeatherData")
-    fun getWeatherData(): LiveData<List<WeatherData>>
+    fun getWeatherData(city: String): LiveData<List<WeatherData>>
 }
