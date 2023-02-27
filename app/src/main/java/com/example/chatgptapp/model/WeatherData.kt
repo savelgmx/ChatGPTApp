@@ -1,4 +1,4 @@
-package com.example.chatgptapp
+package com.example.chatgptapp.model
 
 data class WeatherData(
     val city: String,

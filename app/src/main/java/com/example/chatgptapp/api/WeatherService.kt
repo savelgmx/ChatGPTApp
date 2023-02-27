@@ -1,6 +1,6 @@
 package com.example.chatgptapp.api
 
-import com.example.chatgptapp.WeatherData
+import com.example.chatgptapp.model.WeatherData
 import retrofit2.http.GET
 import retrofit2.http.Query
 

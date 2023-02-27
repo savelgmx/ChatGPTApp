@@ -1,10 +1,11 @@
-package com.example.chatgptapp
+package com.example.chatgptapp.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
+import com.example.chatgptapp.model.WeatherData
+import com.example.chatgptapp.db.WeatherDatabase
 import com.example.chatgptapp.api.WeatherApiClient
+import com.example.chatgptapp.repository.WeatherRepository
 
 class WeatherViewModel(application: Application) : AndroidViewModel(application) {
 

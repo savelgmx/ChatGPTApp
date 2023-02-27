@@ -1,15 +1,18 @@
-package com.example.chatgptapp
+package com.example.chatgptapp.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.chatgptapp.model.WeatherData
 
 @Dao
 interface WeatherDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertWeatherData(weatherData: WeatherData)
+
+
 
     @Query("SELECT * FROM WeatherData")
     fun getWeatherData(city: String): LiveData<List<WeatherData>>

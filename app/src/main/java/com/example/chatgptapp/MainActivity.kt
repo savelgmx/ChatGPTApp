@@ -17,7 +17,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.chatgptapp.model.WeatherData
 import com.example.chatgptapp.ui.theme.ChatGPTAppTheme
+import com.example.chatgptapp.viewmodel.WeatherViewModel
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
