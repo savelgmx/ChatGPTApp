@@ -2,6 +2,7 @@ package com.example.chatgptapp.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import com.example.chatgptapp.model.WeatherData
 import com.example.chatgptapp.db.WeatherDatabase
 import com.example.chatgptapp.api.WeatherApiClient
@@ -14,11 +15,11 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
     init {
         val weatherService = WeatherApiClient.create()
         val weatherDao = WeatherDatabase.getDatabase(application).weatherDao()
-        weatherRepository = WeatherRepository(weatherService, weatherDao)
+        weatherRepository = WeatherRepository(weatherDao)
     }
 
-    suspend fun getWeatherData(city: String): WeatherData? {
-        val cachedData = weatherRepository.getCachedData(city)
+    suspend fun getWeatherData(city: String): LiveData<WeatherData> {
+        val cachedData = weatherRepository.getWeatherData(city)
         if (cachedData != null) {
             return cachedData
         }

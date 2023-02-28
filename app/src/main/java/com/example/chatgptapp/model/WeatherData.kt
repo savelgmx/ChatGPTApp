@@ -3,7 +3,7 @@ package com.example.chatgptapp.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 
-@Entity(tableName = "current_weather")
+@Entity(tableName = "WeatherData")
 data class WeatherData(
     @ColumnInfo(name = "city")
     val city: String,
