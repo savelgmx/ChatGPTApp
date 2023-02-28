@@ -25,14 +25,10 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
         }
 
         val response = weatherRepository.getWeatherData(city)
-        if (response.isSuccessful) {
-            val weatherData = response.body()
-            weatherData?.let {
+    response.let {
                 weatherRepository.getWeatherData(city)
                 return it
             }
         }
-        return null
-    }
 }
 

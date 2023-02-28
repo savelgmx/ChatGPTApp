@@ -32,13 +32,13 @@ class MainActivity : ComponentActivity() {
 
         // Call the API and update the UI
         lifecycleScope.launch {
-            val weatherData = weatherViewModel.getWeatherData("Krasnoyarsk", "33cc710b4ef18155198d89c3b2033f56")
+            val weatherData = weatherViewModel.getWeatherData("Krasnoyarsk")
             // Update the UI with the weather data
             // ...
         }
 
         setContent {
-            val weatherData = remember { mutableStateOf(WeatherData()) }
+          //  val weatherData = remember { mutableStateOf(WeatherData()) }
             ChatGPTAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
