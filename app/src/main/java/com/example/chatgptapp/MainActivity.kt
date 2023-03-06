@@ -38,15 +38,25 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent {
-          //  val weatherData = remember { mutableStateOf(WeatherData()) }
+            val weatherData = remember {
+                WeatherData(
+                    city = "Krasnoyarsk",
+                    temperature = 0.0,
+                    humidity = 0,
+                    windSpeed = 0.0,
+                    pressure = 0,
+                    description = ""
+                )
+            }
+
             ChatGPTAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                   // Greeting("Android")
-                    WeatherScreen(weatherData = weatherData.value)
+                    // Greeting("Android")
+                    WeatherScreen(weatherData)
                 }
             }
         }
@@ -58,32 +68,31 @@ fun Greeting(name: String) {
     Text(text = "Hello $name!")
 }
 
+@Composable
+fun WeatherScreen(weatherData: WeatherData) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = weatherData.city, fontSize = 24.sp)
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(text = "Temperature: ${weatherData.temperature}°C", fontSize = 20.sp)
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(text = "Humidity: ${weatherData.humidity}%", fontSize = 20.sp)
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(text = "Wind speed: ${weatherData.windSpeed} m/s", fontSize = 20.sp)
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(text = "Pressure: ${weatherData.pressure} hPa", fontSize = 20.sp)
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(text = "Description: ${weatherData.description}", fontSize = 20.sp)
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     ChatGPTAppTheme {
         Greeting("Android")
     }
-
-    @Composable
-    fun WeatherScreen(weatherData: WeatherData) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(text = weatherData.city, fontSize = 24.sp)
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Temperature: ${weatherData.temperature}°C", fontSize = 20.sp)
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = "Humidity: ${weatherData.humidity}%", fontSize = 20.sp)
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = "Wind speed: ${weatherData.windSpeed} m/s", fontSize = 20.sp)
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = "Pressure: ${weatherData.pressure} hPa", fontSize = 20.sp)
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = "Description: ${weatherData.description}", fontSize = 20.sp)
-        }
-    }
-
 }
