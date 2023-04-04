@@ -8,8 +8,12 @@ import com.example.chatgptapp.api.WeatherService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class WeatherRepository(private val weatherDao: WeatherDao) {
+
+@Singleton
+class WeatherRepository @Inject constructor(private val weatherDao: WeatherDao) {
     private val weatherService: WeatherService = WeatherApiClient.create()
 
     fun getWeatherData(city: String): LiveData<WeatherData> {

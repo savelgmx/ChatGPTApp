@@ -3,32 +3,32 @@ package com.example.chatgptapp.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import com.example.chatgptapp.model.WeatherData
 import com.example.chatgptapp.db.WeatherDatabase
 import com.example.chatgptapp.api.WeatherApiClient
 import com.example.chatgptapp.repository.WeatherRepository
 
-class WeatherViewModel(application: Application) : AndroidViewModel(application) {
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-    private val weatherRepository: WeatherRepository
-
-    init {
-        val weatherService = WeatherApiClient.create()
-        val weatherDao = WeatherDatabase.getDatabase(application).weatherDao()
-        weatherRepository = WeatherRepository(weatherDao)
-    }
+@HiltViewModel
+class WeatherViewModel @Inject constructor(
+    private val repository: WeatherRepository,
+    private val application: Application
+) : ViewModel() {
 
     suspend fun getWeatherData(city: String): LiveData<WeatherData> {
-        val cachedData = weatherRepository.getWeatherData(city)
+        val cachedData = repository.getWeatherData(city)
         if (cachedData != null) {
             return cachedData
         }
 
-        val response = weatherRepository.getWeatherData(city)
+        val response = repository.getWeatherData(city)
     response.let {
-                weatherRepository.getWeatherData(city)
+                repository.getWeatherData(city)
                 return it
             }
-        }
+    }
 }
 

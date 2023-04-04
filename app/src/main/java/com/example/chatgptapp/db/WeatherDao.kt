@@ -6,7 +6,9 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.chatgptapp.model.WeatherData
+import javax.inject.Singleton
 
+@Singleton
 @Dao
 interface WeatherDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

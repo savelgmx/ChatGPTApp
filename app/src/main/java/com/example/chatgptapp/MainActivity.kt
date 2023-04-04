@@ -20,8 +20,10 @@ import androidx.lifecycle.lifecycleScope
 import com.example.chatgptapp.model.WeatherData
 import com.example.chatgptapp.ui.theme.ChatGPTAppTheme
 import com.example.chatgptapp.viewmodel.WeatherViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private lateinit var weatherViewModel: WeatherViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
