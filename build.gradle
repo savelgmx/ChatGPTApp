@@ -1,13 +1,29 @@
 buildscript {
     ext.kotlin_version = "1.3.72"
-    ext.compose_ui_version="1.1.0"
+    ext.compose_ui_version = "1.1.0"
     repositories {
         google()
+        jcenter()
         mavenCentral()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:2.40.5"
+    }
+
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+            mavenCentral()
+        }
+    }
+
+    // Add this repository for Kotlin Gradle plugin
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
     }
 }
